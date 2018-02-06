@@ -1,0 +1,75 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace skillup_generics
+{
+    class order
+    {
+        public int or_no;
+    
+    }
+    class employee
+    {
+        public int no;
+        public string name;
+    }
+    class customer
+    {
+        public int no;
+        public string name;
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int input,flag=0;
+            IList<employee> e_list = new List<employee>();
+            IList<customer> c_list = new List<customer>();
+            IList<order> order_list = new List<order>();
+
+            e_list.Add(new employee() { no = 1, name = "mihir" });
+            e_list.Add(new employee() { no = 2, name = "jk" });
+            c_list.Add(new customer() { no = 12, name = "jacks" });
+            c_list.Add(new customer() { no = 13, name = "jnag" });
+
+            Console.WriteLine("Enter the order no:--");
+            order_list.Add(new order() { or_no = Convert.ToInt32(Console.ReadLine()) });
+
+            Console.WriteLine("Enter the employee number:");
+            input = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < e_list.Count;i++ )
+            {
+                if (e_list[i].no==input)
+                {
+                    Console.WriteLine("record found:");
+                    break;
+                }
+                
+                 Console.WriteLine("record didnt exist");
+               
+                
+            }
+
+
+            /*Console.WriteLine("Name\t\tNO.");
+
+            foreach (employee i in o_list)
+            {
+                Console.WriteLine(i.name+"\t\t"+i.no);
+            }
+
+            foreach (customer i in c_list)
+            {
+                Console.WriteLine(i.name + "\t\t" + i.no);
+            }*/
+
+
+
+            Console.ReadKey();
+        }
+    }
+}
