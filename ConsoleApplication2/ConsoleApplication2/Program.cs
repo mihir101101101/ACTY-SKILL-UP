@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication2
 {
-    /*public interface emp_details
+    /*interface emp_details
     {
-        public int emp_no;
-        public string emp_fname;
-        public void show();
-        public void set(int n,string name);
+        void set(int n,string name);
     }*/
 
    
@@ -24,7 +21,7 @@ namespace ConsoleApplication2
 
             Console.Write("Enter Employee no: ");
             emp_no = Convert.ToInt32(Console.ReadLine());
-           /* Console.Write("Enter employee Firstname: ");
+            /*Console.Write("Enter employee Firstname: ");
             emp_fname = Console.ReadLine();
             Console.Write("Enter employee Lastname: ");
             emp_lname = Console.ReadLine();
@@ -40,8 +37,7 @@ namespace ConsoleApplication2
         }
     }
 
-
-     class product
+    class product
      {
          public int p_no;
          public double unit_p,dis;
@@ -49,41 +45,42 @@ namespace ConsoleApplication2
 
          public void set_products()
          {
-             Console.Write("Enter Product No.");
+             Console.Write("Enter Product No: ");
              p_no = Convert.ToInt32(Console.ReadLine());
-           /*  Console.Write("Enter Product Name.");
+             Console.Write("Enter Product Name: ");
              p_name = Console.ReadLine();
-             Console.Write("Enter unit Prize.");
-             unit_p = Convert.ToDouble(Console.ReadLine());*/
+             Console.Write("Enter unit Prize: ");
+             unit_p = Convert.ToDouble(Console.ReadLine());
          }
 
 
      }
 
-     class orderdetails
+    class orderdetails
      {
          product ob3 = new product();
-         order ob = new order();
          public int quan;
-         double u_prize, amount, dis_amount, gt;
+         public double u_prize, amount, dis_amount, gt;
          DateTime c_date, m_date;
 
          public void set_prodetails()
          {
              ob3.set_products();
-             Console.WriteLine("Enter the quantity:");
+             Console.Write("Enter the quantity: ");
              this.quan = Convert.ToInt32(Console.ReadLine());
              this.u_prize = ob3.unit_p;
              this.amount = this.quan * this.u_prize;
-             Console.WriteLine("Enter the Discount amount:");
+             Console.Write("Enter the Discount amount: ");
              this.dis_amount = Convert.ToDouble(Console.ReadLine());
              this.gt = this.amount - this.dis_amount;
-             this.c_date = new DateTime();
-             this.m_date = new DateTime();
+             this.c_date = DateTime.Now;
+             this.m_date = DateTime.Now;
          }
 
          public void show_p()
          {
+             this.amount = this.quan * this.u_prize;
+             this.gt = this.amount - this.dis_amount;
              Console.WriteLine(ob3.p_no +"\t\t" +ob3.p_name+"\t\t"+this.u_prize+"\t\t"+this.quan+"\t\t"
                  +this.amount+"\t\t"+this.dis_amount+"\t\t"+this.gt);
          }
@@ -93,17 +90,18 @@ namespace ConsoleApplication2
              Console.WriteLine(ob3.p_no + "\t\t" + this.quan);
          }
 
-         public int check(int k)
+         public Boolean check(int k)
          {
              if (k == ob3.p_no)
              {
-                 Console.WriteLine("Product do exists:-----");
-                 return ob3.p_no;
+
+                 Console.WriteLine("\nProduct do exists:-----");
+                 return true;
+                 
              }
              else
              {
-                 Console.WriteLine("Product doesnt exists:------");
-                 return 0;
+                 return false;
              }
          }
 
@@ -112,12 +110,9 @@ namespace ConsoleApplication2
              if (p == ob3.p_no)
              {
                  this.quan = q;
+                 Console.WriteLine("\nQuantity has been Updated:------------");
              }
-             else
-             {
-                 Console.WriteLine("Product doesnt exists:------");
-                 
-             }
+             
             
          }
 
@@ -126,10 +121,9 @@ namespace ConsoleApplication2
 
      }
 
+
     /*public interface c_details
     {
-        public int c_no;
-        public string c_name;
         public void show();
         public void set(int n, string name);
     }*/
@@ -143,7 +137,7 @@ namespace ConsoleApplication2
         {
             Console.Write("Enter cutomer no.:");
             c_no = Convert.ToInt32(Console.ReadLine());
-           /* Console.Write("Enter customer name.:");
+            /*Console.Write("Enter customer name.:");
             c_name = Console.ReadLine();
             
             Console.Write("Enter customer Address: ");
@@ -165,7 +159,7 @@ namespace ConsoleApplication2
 
     class order
     {
-
+        
         employee ob1 = new employee();
         customer ob2 = new customer();
         
@@ -173,15 +167,15 @@ namespace ConsoleApplication2
         public string s_name, s_add, s_city, s_state, s_country;
         DateTime date, c_date, m_date;
 
-        public void set_order()
+        public void set_order(int p)
         {
-            Console.Write("Enter the order no:-");
-            or_no = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter employee details:-----------------------");
+
+            or_no = p;
+            Console.WriteLine("\nEnter employee details:-----------------------");
             ob1.set_employee();
-            Console.WriteLine("Enter customer details:-----------------------");
+            Console.WriteLine("\nEnter customer details:-----------------------");
             ob2.set_customer();
-            Console.WriteLine("Enter the Order date: (**Only in dd/mm/yyyy format)");
+           Console.Write("Enter the Order date: (**Only in dd/mm/yyyy format): ");
             date = Convert.ToDateTime(Console.ReadLine());
 
             this.s_name = ob2.c_name;
@@ -189,16 +183,29 @@ namespace ConsoleApplication2
             this.s_city = ob2.c_city;
             this.s_state = ob2.c_state;
             this.s_country = ob2.c_con;
-            this.c_date = new DateTime();
-            this.m_date = new DateTime();
+            this.c_date = DateTime.Now;
+            this.m_date = DateTime.Now;
 
+        }
+
+        public void show1()
+        {
+            Console.Write(or_no+"\t\t");
+        
         }
          
         public void showall()
         {
            
-            Console.WriteLine(ob1.emp_no + "\t\t" +
-                ob1.emp_fname + "\t\t" + ob2.c_no + "\t\t" + ob2.c_name + "\t\t" + date+"\t\t"+s_name);
+            Console.WriteLine(or_no+"\t\t"+ob1.emp_no + "\t\t" +
+                ob2.c_no + "\t\t" +s_name);
+        }
+
+
+        public void checksum(order o)
+        {
+            this.ob1 = o.ob1;
+            this.ob2 = o.ob2;
         }
 
     }
@@ -225,7 +232,7 @@ namespace ConsoleApplication2
 
                     case 1:
                         {
-                            int n1,b;
+                            int n1,b,order_no;
                         l2: Console.WriteLine("------------------------------:");
                             Console.WriteLine("1. Add order\n2. Update order\n3. Delete order");
                             Console.WriteLine("------------------------------:");
@@ -245,20 +252,47 @@ namespace ConsoleApplication2
                                         {
                                             of++;
                                         }
-                                     Console.WriteLine("-------------------------------------------------------");
+                                        Console.WriteLine("-------------------------------------------------------");
                                         Console.WriteLine("Enter the order details");
                                         Console.WriteLine("-------------------------------------------------------");
 
 
                                             ob[of] = new order();
                                             ob1[of] = new orderdetails();
-                                            ob[of].set_order();
-                                            ob1[of].set_prodetails();
+                                            Console.Write("Enter the order no:-");
+                                            order_no=Convert.ToInt32(Console.ReadLine());
+                                            if (of == 0)
+                                            {
+                                                ob[of].set_order(order_no);
+                                            }
+                                            else
+                                            {
+                                                for (int i = 0; i < of; i++)
+                                                {
+                                                    if (ob[i] == null)
+                                                        continue;
+                                                    if (ob[i].or_no == order_no)
+                                                    {
+                                                        ob[of] = ob[i];
+                                                        goto k;
+                                                    }
+                                                    
+                                                }
+                                                
+                                                   
+                                                        ob[of].set_order(order_no);
+                                                       
+                                            }
+
+                                            k:ob[of].showall();
+                                                ob1[of].set_prodetails();
        
-                                        Console.WriteLine("Product No.\tProduct Name\tUnitPrice\tQuantity\tAmount\tDiscount Amount\tGrand Total");
+                                        Console.WriteLine("Order No.\tProduct No.\tProduct Name\tUnitPrice\tQuantity\tAmount\tDiscount Amount\tGrand Total");
                                         for (int i = 0; i <= of; i++)
                                         {
-                                          //  ob[i].showall();
+                                            if (ob[i] == null)
+                                                continue;
+                                            ob[i].show1();
                                             ob1[i].show_p();
                                         }
 
@@ -284,7 +318,8 @@ namespace ConsoleApplication2
                                 case 2:
                                     {
 
-                                        int p_no,exist,qun;
+                                        int p_no,qun;
+                                        Boolean check;
                                         Console.WriteLine("Enter order details:-----------------------------");
                                         Console.Write("Enter Order no:");
                                         or = Convert.ToInt32(Console.ReadLine());
@@ -306,16 +341,22 @@ namespace ConsoleApplication2
                                         p_no = Convert.ToInt32(Console.ReadLine());
                                         for (int i = 0; i <= of; i++)
                                         {
-                                            exist=ob1[i].check(p_no);
+                                           check= ob1[i].check(p_no);
+                                           if (check == true)
+                                           {
+                                               Console.WriteLine("Enter the quantity that you want to update:");
+                                               qun = Convert.ToInt32(Console.ReadLine());
+
+                                               for (int j = 0; j <= of; j++)
+                                               {
+                                                   ob1[j].change(qun, p_no);
+                                               }
+
+                                               break;
+                                           }
                                         }
 
-                                        Console.WriteLine("Enter the quantity that you want to update:");
-                                        qun = Convert.ToInt32(Console.ReadLine());
-
-                                        for (int i = 0; i <= of; i++)
-                                        {
-                                            ob1[i].change(qun,p_no);
-                                        }
+                                       
                                        
                                             break;
 
@@ -337,51 +378,37 @@ namespace ConsoleApplication2
                                         Console.WriteLine("Delete any order deatails---------------------");
                                         Console.WriteLine("Enter the order no: ");
                                         d = Convert.ToInt32(Console.ReadLine());
-                                        Console.WriteLine("Product No.\tProduct Name\tUnitPrice\tQuantity\tAmount\tDiscount Amount\tGrand Total");
+                                        Console.WriteLine("Order No.\tProduct No.\tProduct Name\tUnitPrice\tQuantity\tAmount\tDiscount Amount\tGrand Total");
                                         for (int i = 0; i <= of; i++)
                                         {
+                                            if (ob[i] == null)
+                                                continue;
                                             if (ob[i].or_no == d)
                                             {
+                                                ob[i].show1();
                                                 ob1[i].show_p();
+
+                                                ob = ob.Where(s => s != ob[i]).ToArray(); // <-----------delete order deatils--------->
+                                                
                                             }
                                         }
 
 
+                                        of--;
 
                                         Console.WriteLine("----------------------------------------------------------------------\n\n\n");
-                                        Console.WriteLine("Product No.\tProduct Name\tUnitPrice\tQuantity\tAmount\tDiscount Amount\tGrand Total");
+                                        Console.WriteLine("Order No.\tProduct No.\tProduct Name\tUnitPrice\tQuantity\tAmount\tDiscount Amount\tGrand Total");
 
-
-                                        if (ob[of].or_no == d)
+                                        
+                                        for (int i = 0; i <= of; i++)
                                         {
-                                            Console.WriteLine("This is last data:");
-                                            break;
-
+                                            if (ob[i] == null)
+                                                continue;
+                                            ob[i].show1();
+                                            ob1[i].show_p();
                                         }
 
-                                        else
-                                        {
-                                            
-                                            for (int i = 0; i <= of; i++)
-                                            {
-                                                if (ob[i].or_no == d)
-                                                {
-                                                    ob[i] = oj[i + 1];
-                                                    
-                                                    for (int j = 0; j <of ; j++)
-                                                    {
-                                                        ob1[j].show_p();
-                                                    }
-                                                }
-
-                                            }
-
-                                            of--;
-
-
-                                        }
-
-
+                                  
 
                                             break;
                                     
@@ -403,10 +430,12 @@ namespace ConsoleApplication2
                     case 2:
                         {
 
-                            Console.WriteLine("This was the last order details:");
-                            for (int i = 0; i == of; i++)
+                            Console.WriteLine("This was the last order details:\n\n");
+                            Console.WriteLine("Product No.\tProduct Name\tUnitPrice\tQuantity\tAmount\tDiscount Amount\tGrand Total");
+
+                            for (int i = 0; i <= of; i++)
                             {
-                                
+                                if(i==of)
                                     ob1[i].show_p();  
                             }
 
@@ -416,7 +445,13 @@ namespace ConsoleApplication2
                     case 3:
                         {
 
-                            Console.WriteLine("This was the last order's unit price:");
+                            Console.WriteLine("This was the last order's unit price:\n\n");
+                            Console.WriteLine("UnitPrice");
+                            for (int i = 0; i <= of; i++)
+                            {
+                                if (i == of)
+                                    Console.WriteLine(ob1[i].u_prize);
+                            }
                             break;
                         }
 
