@@ -1,0 +1,12 @@
+E:\New folder\skillup_generics\skillup_generics\bin\Debug\skillup_generics.exe.config
+E:\New folder\skillup_generics\skillup_generics\bin\Debug\skillup_generics.exe
+E:\New folder\skillup_generics\skillup_generics\bin\Debug\skillup_generics.pdb
+E:\New folder\skillup_generics\skillup_generics\obj\Debug\skillup_generics.csprojResolveAssemblyReference.cache
+E:\New folder\skillup_generics\skillup_generics\obj\Debug\skillup_generics.exe
+E:\New folder\skillup_generics\skillup_generics\obj\Debug\skillup_generics.pdb
+E:\New folder\NEW skillUP File\skillup_generics\bin\Debug\skillup_generics.exe.config
+E:\New folder\NEW skillUP File\skillup_generics\obj\Debug\skillup_generics.exe
+E:\New folder\NEW skillUP File\skillup_generics\obj\Debug\skillup_generics.pdb
+E:\New folder\NEW skillUP File\skillup_generics\bin\Debug\skillup_generics.exe
+E:\New folder\NEW skillUP File\skillup_generics\bin\Debug\skillup_generics.pdb
+E:\New folder\NEW skillUP File\skillup_generics\obj\Debug\skillup_generics.csprojResolveAssemblyReference.cache
