@@ -46,7 +46,7 @@ namespace skillup_generics
             } while (tk.typeEmployee(employee_no));
 
 
-            if (employee_no == "-1")
+            if (employee_no.Equals("-1"))
             {
                 return null;
             }
@@ -67,7 +67,7 @@ namespace skillup_generics
                 customerno = Console.ReadLine();
             } while (tk.typeCustomer(customerno));
 
-            if (customerno == "-1")
+            if (customerno.Equals("-1"))
             {
                 return null;
             }
@@ -90,7 +90,7 @@ namespace skillup_generics
                 productno = Console.ReadLine();
             } while (tk.typeProduct(productno));
 
-            if (productno == "-1")
+            if (productno.Equals("-1"))
             {
                 return null;
             }
@@ -138,7 +138,7 @@ namespace skillup_generics
 
             } while (IsOrderPlaced(orderNo));
 
-            if (orderNo == "-1")
+            if (orderNo.Equals("-1"))
             {
                 return null;
             }
@@ -170,7 +170,7 @@ namespace skillup_generics
                 date = Console.ReadLine();
 
             } while (tk.typeDate(date));
-            if (date == "-1")
+            if (date.Equals("-1"))
             {
                 return null;
             }
@@ -204,7 +204,7 @@ namespace skillup_generics
                 {
                     Console.Write(constants.ENTERPRICE);
                     value = Console.ReadLine();
-                    if (value == "")
+                    if (value.Equals(""))
                     {
                         flag = false;
                         break;
@@ -233,7 +233,7 @@ namespace skillup_generics
                     value = Console.ReadLine();
                 } while (tk.typeQuantity(value));
 
-                if (value == "-1")
+                if (value.Equals("-1"))
                 {
                     orderList.Remove(orderList[orderList.Count - 1]);
                     return null;
@@ -247,7 +247,7 @@ namespace skillup_generics
                     Console.Write(constants.ENTERDISCOUNT);
                     value = Console.ReadLine();
                 } while (tk.typeDiscount(value, orderdetailsOb2.Amount));
-                if (value == "-1")
+                if (value.Equals("-1"))
                 {
                     orderList.Remove(orderList[orderList.Count - 1]);
                     return null;
@@ -466,7 +466,7 @@ namespace skillup_generics
                                         save = Console.ReadLine();
                                     } while (tk.typeSave(save));
 
-                                    if (save == "y" || save == "Y")
+                                    if (save.Equals("y") || save.Equals("Y"))
                                     {
 
                                         pair2.Key.Quantity = quantity;
@@ -478,7 +478,7 @@ namespace skillup_generics
 
                                     }
 
-                                    else if (save == "n" || save == "N")
+                                    else if (save.Equals("n") || save.Equals("N"))
                                     {
                                         state = false;
                                         flas2 = true;
@@ -486,10 +486,6 @@ namespace skillup_generics
                                     }
 
                                 }
-
-
-
-
                             }
 
                             if (flas2 == false)
@@ -498,12 +494,8 @@ namespace skillup_generics
                                 state = true;
                                 break;
                             }
-
                             break;
-
-
                         }
-
                     }
 
 
@@ -802,11 +794,8 @@ namespace skillup_generics
                     case Operator.ShowAllDetailsOfOrder:
                         ShowAllOrderDetails();
                         break;
-
                 }
-
             }
-
         }
     }
 }
