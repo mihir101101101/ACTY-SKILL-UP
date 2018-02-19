@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace skillup_generics
 {
-    class orderdetails
+    public class orderdetails 
     {
         private product pro;
-        private int ref_or_no;
+        
+        //private string ref_or_no;
         private int quan;
         private double amount, u_price, gt, dis;
         private DateTime c_date, m_date;
-
-        public int Ref_no
-        {
-            get { return ref_or_no; }
-            set { ref_or_no = value; }
-        }
+        //public string Ref_no
+        //{
+        //    get { return ref_or_no; }
+        //    set { ref_or_no = value; }
+        //}
         public int Quantity
         {
             get { return quan; }
@@ -54,12 +54,15 @@ namespace skillup_generics
             get { return m_date; }
             set { m_date = value; }
         }
-
         public product ProductDetail
         {
             get { return pro; }
             set { pro = value; }
         }
 
+        public override string ToString()
+        {
+            return pro.ProductNo+"\t\t"+pro.ProductName+"\t\t"+UnitPrice+"\t\t"+Quantity+"\t\t"+Amount+"\t\t"+DiscountAmount+"\t\t"+GrandTotal +"\n";
+        }
     }
 }

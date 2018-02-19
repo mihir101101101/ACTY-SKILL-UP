@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace skillup_generics
 {
-    class customer
+    public class customer
     {
-        private int c_no, c_pcode;
+        private string c_no;
+        private int c_pcode;
         private string c_name, c_add, c_city, c_state, c_con;
 
-        public int CustomerNo
+        public string CustomerNo
         {
             get { return c_no; }
             set { c_no = value; }
@@ -47,5 +48,9 @@ namespace skillup_generics
             set { c_con = value; }
         }
 
+        public override string ToString()
+        {
+            return CustomerNo + "\t\t" + CustomerName + "\t\t" + Address + "\t\t" + City + "\t" + State + "\t\t" + PostalCode + "\t\t     "+Country;
+        }
     }
 }

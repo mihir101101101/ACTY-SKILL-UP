@@ -6,17 +6,21 @@ using System.Threading.Tasks;
 
 namespace skillup_generics
 {
-    class order
+
+   
+
+   public class order 
     {
         private employee emp;
         private customer cust;
-        private int or_no;
+        private string or_no;
         private DateTime or_date;
         private string s_name, s_add, s_city, s_sate, s_con;
         private int s_pcode;
         private DateTime c_date, m_date;
+        
 
-        public int OrderNo
+        public string OrderNo
         {
             get { return or_no; }
             set { or_no = value; }
@@ -67,6 +71,7 @@ namespace skillup_generics
             set { m_date = value; }
         }
 
+        
         public employee EmployeeDetail
         {
             get { return emp; }
@@ -78,6 +83,12 @@ namespace skillup_generics
             get { return cust; }
             set { cust = value; }
         }
+
+        public override string ToString()
+        {
+            return OrderNo + "\t\t" + emp.EmployeeNo + "\t\t" + emp.FirstName + "\t\t" + cust.CustomerNo + "\t\t" + cust.CustomerName + "\t\t" + ShipAddress+"\t\t" ;
+        }
+
 
     }
 }

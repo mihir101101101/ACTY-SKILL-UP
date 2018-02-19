@@ -6,46 +6,54 @@ using System.Threading.Tasks;
 
 namespace skillup_generics
 {
-    class employee
+    public class employee
     {
-        private int emp_no, emp_p;
-        private string emp_fname, emp_lname, emp_add, emp_city, emp_s;
+        private string employeeNo;
+        string employeePostalCode;
+        private string employeeFirstName, employeeLastName, employeeAddress, employeeCity, employeeState;
 
-        public int EmployeeNo
+        public string EmployeeNo
         {
-            get { return emp_no; }
-            set { emp_no = value; }
+            get { return employeeNo; }
+            set { employeeNo = value; }
         }
-        public int PostalCode
+        public string PostalCode
         {
-            get { return emp_p; }
-            set { emp_p = value; }
+            get { return employeePostalCode; }
+            set { employeePostalCode = value; }
         }
         public string FirstName
         {
-            get { return emp_fname; }
-            set { emp_fname = value; }
+            get { return employeeFirstName; }
+            set { employeeFirstName = value; }
         }
         public string LastName
         {
-            get { return emp_lname; }
-            set { emp_lname = value; }
+            get { return employeeLastName; }
+            set { employeeLastName = value; }
         }
         public string Address
         {
-            get { return emp_add; }
-            set { emp_add = value; }
+            get { return employeeAddress; }
+            set { employeeAddress = value; }
         }
         public string City
         {
-            get { return emp_city; }
-            set { emp_city = value; }
+            get { return employeeCity; }
+            set { employeeCity = value; }
         }
         public string State
         {
-            get { return emp_s; }
-            set { emp_s = value; }
+            get { return employeeState; }
+            set { employeeState = value; }
         }
+
+        public override string ToString()
+        {
+            return EmployeeNo + "\t\t" + FirstName + "\t\t" + LastName + "\t\t" + Address + "\t\t"+City+"\t"+State+"\t"+PostalCode;
+        }
+
+
 
     }
 }
