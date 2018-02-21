@@ -44,6 +44,8 @@
     <Compile Include="customer.cs" />
     <Compile Include="employee.cs" />
     <Compile Include="constants.cs" />
+    <Compile Include="Enum.cs" />
+    <Compile Include="Methods.cs" />
     <Compile Include="order.cs" />
     <Compile Include="orderdetails.cs" />
     <Compile Include="product.cs" />

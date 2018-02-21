@@ -6,46 +6,43 @@ using System.Threading.Tasks;
 
 namespace skillup_generics
 {
-    public class employee
+    public class Employee
     {
-        private string employeeNo;
-        string employeePostalCode;
-        private string employeeFirstName, employeeLastName, employeeAddress, employeeCity, employeeState;
 
         public string EmployeeNo
         {
-            get { return employeeNo; }
-            set { employeeNo = value; }
+            get;
+            set;
         }
         public string PostalCode
         {
-            get { return employeePostalCode; }
-            set { employeePostalCode = value; }
+            get;
+            set;
         }
         public string FirstName
         {
-            get { return employeeFirstName; }
-            set { employeeFirstName = value; }
+            get;
+            set;
         }
         public string LastName
         {
-            get { return employeeLastName; }
-            set { employeeLastName = value; }
+            get;
+            set;
         }
         public string Address
         {
-            get { return employeeAddress; }
-            set { employeeAddress = value; }
+            get;
+            set;
         }
         public string City
         {
-            get { return employeeCity; }
-            set { employeeCity = value; }
+            get;
+            set;
         }
         public string State
         {
-            get { return employeeState; }
-            set { employeeState = value; }
+            get;
+            set;
         }
 
         public override string ToString()

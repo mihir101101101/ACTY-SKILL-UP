@@ -6,32 +6,31 @@ using System.Threading.Tasks;
 
 namespace skillup_generics
 {
-   public class product
+   public class Product
     {
-        private string productNo;
-        public string ProductNo
-        {
-            get { return productNo; }
-            set { productNo = value; }
-        }
-        private string productName;
-        public string ProductName
-        {
-            get { return productName; }
-            set { productName = value; }
-        }
-        private double unitPrice;
-        public double UnitPrice
-        {
-            get { return unitPrice; }
-            set { unitPrice = value; }
-        }
-        private bool isActive;
-        public bool IsActive
-        {
-            get { return isActive; }
-            set { isActive = value; }
-        }
+       public string ProductNo
+       {
+           get;
+           set;
+       }
+
+       public string ProductName
+       {
+           get;
+           set;
+       }
+
+       public double UnitPrice
+       {
+           get;
+           set;
+       }
+
+       public bool IsActive
+       {
+           get;
+           set;
+       }
 
         public override string ToString()
         {

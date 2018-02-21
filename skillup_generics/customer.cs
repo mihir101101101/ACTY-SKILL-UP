@@ -4,48 +4,47 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace skillup_generics
 {
-    public class customer
+    public class Customer
     {
-        private string c_no;
-        private int c_pcode;
-        private string c_name, c_add, c_city, c_state, c_con;
+
 
         public string CustomerNo
         {
-            get { return c_no; }
-            set { c_no = value; }
+            get;
+            set;
         }
         public int PostalCode
         {
-            get { return c_pcode; }
-            set { c_pcode = value; }
+            get;
+            set;
         }
         public string CustomerName
         {
-            get { return c_name; }
-            set { c_name = value; }
+            get;
+            set;
         }
         public string Address
         {
-            get { return c_add; }
-            set { c_add = value; }
+            get;
+            set;
         }
         public string City
         {
-            get { return c_city; }
-            set { c_city = value; }
+            get;
+            set;
         }
         public string State
         {
-            get { return c_state; }
-            set { c_state = value; }
+            get;
+            set;
         }
         public string Country
         {
-            get { return c_con; }
-            set { c_con = value; }
+            get;
+            set;
         }
 
         public override string ToString()

@@ -8,73 +8,86 @@ using System.Text.RegularExpressions;
 namespace skillup_generics
 {
     
-        public class typechecker 
+        public class Typechecker 
         {
-            constants error= new constants();
             
-            public Boolean type_c(string typed)
+            public Boolean typeCustomer(string typed)
             {
                 Regex ob = new Regex("-?[0-9]");
 
-                if (typed == "")
+                if (typed.Equals(""))
                 {
-                    Console.WriteLine(constants.BLANKVALUE);
+                    Console.WriteLine(Constants.BLANKVALUE);
                     return true;
                 }
                 else
                 {
                     if (ob.IsMatch(typed))
                     {
-                        if (typed == "10" || typed == "11" || typed == "12" || typed == "-1")
+                        var c = Program.customerList.Find(s => s.CustomerNo == typed);
+                        if (c == null)
+                        {
+
+                            Console.WriteLine(Constants.ENTERVALIDCUS);
+                            return true;
+                        }
+                        if (c!=null || typed.Equals("-1"))
                         {
                             return false;
                         }
-                        Console.WriteLine(constants.ENTERVALID);
+                        Console.WriteLine(Constants.ENTERVALIDCUS);
                         return true;
                     }
                     else {
-                        Console.WriteLine(constants.ENTERAGAIN);
+                        Console.WriteLine(Constants.ENTERAGAIN);
                         return true;
                     }
                 }
             }
 
-            public Boolean type_e(string typed)
+            public Boolean typeEmployee(string typed)
             {
                 Regex ob = new Regex("-?[0-9]");
 
-                if (typed == "")
+                if (typed.Equals(""))
                 {
-                    Console.WriteLine(constants.BLANKVALUE);
+                    Console.WriteLine(Constants.BLANKVALUE);
                     return true;
                 }
                 else
                 {
                     if (ob.IsMatch(typed))
                     {
-                        if (typed == "1" || typed == "2" || typed == "3" || typed=="-1")
+                        var e = Program.employeeList.Find(s => s.EmployeeNo == typed);
+                        if (e == null)
+                        {
+                            Console.WriteLine(Constants.ENTERVALIDEMP);
+                            return true;
+                        }
+
+                        if (e !=null || typed.Equals("-1"))
                         {
                             return false;
                         }
-                        Console.WriteLine(constants.ENTERVALID);
+                        Console.WriteLine(Constants.ENTERVALIDEMP);
                         return true;
                     }
 
                     else
                     {
-                        Console.WriteLine(constants.ENTERAGAIN);
+                        Console.WriteLine(Constants.ENTERAGAIN);
                         return true; 
                     }
                 }
             }
 
-            public Boolean type_p(string typed)
+            public Boolean typeProduct(string typed)
             {
                 Regex ob = new Regex("^-?[0-9]+$");
 
-                if (typed == "")
+                if (typed.Equals(""))
                 {
-                    Console.WriteLine(constants.BLANKVALUE);
+                    Console.WriteLine(Constants.BLANKVALUE);
                     return true;
                 }
                 else
@@ -82,130 +95,144 @@ namespace skillup_generics
 
                     if (ob.IsMatch(typed))
                     {
-                        if (typed == "23" || typed == "24" || typed == "36" || typed == "99" || typed == "-1" )
+                        var p = Program.productList.Find(s => s.ProductNo.Equals(typed));
+                        if(p == null)
+                        {
+                            Console.WriteLine(Constants.ENTERVALIDPRO);
+                            return true;
+                        }
+                        if (p !=null || typed.Equals("-1") )
                         {
                             return false;
                         }
-                        Console.WriteLine(constants.ENTERVALID);
+                        Console.WriteLine(Constants.ENTERVALIDPRO);
                         return true;
                     }
 
                     else
                     {
-                        Console.WriteLine(constants.ENTERAGAIN); 
+                        Console.WriteLine(Constants.ENTERAGAIN); 
                         return true; }
                 }
             }
 
-            public Boolean type_save(string typed)
+            public Boolean typeSave(string typed)
             {
                 Regex ob = new Regex("^[a-zA-Z]+$");
-                if (typed == "")
+                if (typed.Equals(""))
                 {
-                    Console.WriteLine(constants.BLANKVALUE);
+                    Console.WriteLine(Constants.BLANKVALUE);
                     return true;
                 }
 
                 else
                 {
-                    if (ob.IsMatch(typed) && typed == "y" || typed== "Y" || typed == "n" || typed == "N" )
+                    if (ob.IsMatch(typed) && typed.Equals("y") || typed.Equals("Y") || typed.Equals("n") || typed.Equals("N") )
                     {
                         return false;
                     }
                     else
                     {
-                        Console.WriteLine(constants.ENTERVALID); 
+                        Console.WriteLine(Constants.ENTERVALID); 
                         return true; }
                 }
             }
 
-            public Boolean type_date(string typed)
+            public Boolean typeDate(string typed)
             {
                 Regex ob = new Regex("^(0[1-9]|[1|2][0-9]|3[01])[/](0[1-9]|1[012])[/](19|20)[0-9][0-9]$");
 
-                if (typed == "-1")
+                if (typed.Equals("-1"))
                 {
                     return false;
                 }
                 
-                if (typed == "")
+                if (typed.Equals(""))
                 {
-                    Console.WriteLine(constants.BLANKVALUE);
+                    Console.WriteLine(Constants.BLANKVALUE);
                     return true;
                 }
 
                 else
                 {
+                   try{
+                         if (ob.IsMatch(typed))
+                         {
+                            Convert.ToDateTime(typed);
+                            return false;
+                         }
+                      }
 
-                    if (ob.IsMatch(typed))
+                   catch(FormatException e)
+                   {
+                        Console.WriteLine(e.Message + Constants.ENTERVALID);
+                       return true;
+                   }
+                   
+                    
                     {
-                        
-                        return false;
-                    }
-                    else
-                    {
-                        Console.WriteLine(constants.ENTERVALID);
+                        Console.WriteLine(Constants.ENTERVALID);
                         return true;
                     }
 
                 }
             }
 
-            public Boolean type_start(string typed)
+            public Boolean typeStart(string typed)
             {
                 Regex ob = new Regex("^[0-9]+$");
-                if (typed == "")
+                if (typed.Equals(""))
                 {
-                    Console.WriteLine(constants.ENTERAGAIN);
+                    Console.WriteLine(Constants.BLANKVALUE);
                     return true;
                 }
                 else
                 {
-                    if (ob.IsMatch(typed) && typed == "1" || typed == "2" || typed == "3" || typed == "4" || typed == "5" || typed == "6" || typed == "7" || typed == "8")
+                    if (ob.IsMatch(typed))
                     {
                         return false;
                     }
                     else {
-                        Console.WriteLine(constants.ENTERVALID);
+                        Console.WriteLine(Constants.ONLYNUMERIC);
                         return true; 
                     }
                 }
 
             }
 
-            public Boolean type_second_start(string typed)
+            public Boolean typeSecondStart(string typed)
             {
-                Regex ob = new Regex("^[-|*][0-9]+$");
-                if (typed == "")
+                Regex ob = new Regex("^-?[0-9]+$");
+                if (typed.Equals(""))
                 {
-                    Console.WriteLine(constants.ENTERAGAIN);
+                    Console.WriteLine(Constants.BLANKVALUE);
                     return true;
                 }
                 else 
                 {
-                    if (ob.IsMatch(typed) || (typed == "1" || typed == "2" || typed == "3" || typed == "-1"))
+                    if (ob.IsMatch(typed))
                     {
                         return false;
                     }
                     else
                     {
-                        Console.WriteLine(constants.ENTERVALID);
+                        Console.WriteLine(Constants.ONLYNUMERIC);
                         return true;
                     }
                 }
             }
 
-            public bool type_o(string typed)
+            public bool typeOrder(string typed)
             {
                 Regex ob = new Regex("^[-]?[a-zA-Z0-9_]+$");
                 if (typed == "")
                 {
-                   Console.WriteLine(constants.BLANKVALUE);
+                   Console.WriteLine(Constants.BLANKVALUE);
                     return true;
                 }
                 else
                 {
-                    if (typed == "-1")
+                    if (typed.Equals("-1"))
                     {
                         return false;
                     }
@@ -216,11 +243,11 @@ namespace skillup_generics
                     }
                     else if (!ob.IsMatch(typed))
                     {
-                        Console.WriteLine(constants.ALPHANUMERIC);
+                        Console.WriteLine(Constants.ALPHANUMERIC);
                     }
                     else
                     {
-                        Console.WriteLine("Order no. value Not more than 10 character");   
+                        Console.WriteLine(Constants.ORNOLIMIT);   
                     }
 
                     return true;
@@ -228,84 +255,102 @@ namespace skillup_generics
                
             }
 
-            public bool type_q(string typed)
+            public bool typeQuantity(string typed)
             {
                 Regex ob = new Regex("^[0-9]+$");
                 if (typed == "")
                 {
-                    Console.WriteLine(constants.BLANKVALUE);
+                    Console.WriteLine(Constants.BLANKVALUE);
                     return true;
                 }
                 else
                 {
                     try
                     {
-                        if (ob.IsMatch(typed) && Convert.ToInt64(typed) <= 999 && Convert.ToInt64(typed) > 0)
+                        if ((Convert.ToDouble(typed) % 1) > 0)
+                            Console.WriteLine(Constants.NOTINFRACTION);
+                        else if (ob.IsMatch(typed) && Convert.ToInt64(typed) <= 999 && Convert.ToInt64(typed) > 0)
                             return false;
                         else
-                            Console.WriteLine(constants.QUANTITYNOTZERO);
+                            Console.WriteLine(Constants.QUANTITYNOTZERO);
                         return true;
                     }
                     catch (OverflowException e)
                     {
-                        Console.WriteLine(e + "\t" + "Enter again:");
+                        Console.WriteLine("\n"+e.Message + "\n" + Constants.ENTERAGAIN);
+                        return true;
+                    }
+                    catch (FormatException e)
+                    {
+                        Console.WriteLine("\n" + e.Message + "\n" + Constants.ENTERAGAIN);
                         return true;
                     }
                 }
             }
 
-            public bool type_dis(string typed,double amount)
+            public bool typeDiscount(string typed,double amount)
             {
                 Regex ob = new Regex("^[0-9]*([.][0-9]+)?$");
-                if (typed == "")
+                if (typed.Equals(""))
                 {
-                    Console.WriteLine(constants.BLANKVALUE);
+                    Console.WriteLine(Constants.BLANKVALUE);
                     return true;
                 }
                 else
                 {
                     if (ob.IsMatch(typed))
                     {
-                        if (amount-(Convert.ToDouble(typed))>0 && Convert.ToDouble(typed) <= 99999 && Convert.ToDouble(typed) >= 0)
+                        if (amount-(Convert.ToDouble(typed))>=0 && Convert.ToDouble(typed) <= 99999 && Convert.ToDouble(typed) >= 0)
                             return false;
                         else
                         {
-                            Console.WriteLine("Discount not to be exceed from " + amount);
+                            Console.WriteLine(Constants.DISCOUNTEXCEED + amount);
                             return true; 
                         }
                     }
                     else
-                        Console.WriteLine("Numeric value Only (Enter Again--------------->) ");
+                        Console.WriteLine(Constants.ONLYNUMERIC);
                     return true;
                 }
             }
 
-            public bool type_amount(string typed)
+            public bool typeAmount(string typed)
             {
                 Regex ob = new Regex("^[0-9]*([.][0-9]+)?$");
-                if (typed == "")
+                if (typed.Equals(""))
                 {
-                    Console.WriteLine("Enter Again--------------->");
+                    Console.WriteLine(Constants.ENTERAGAIN);
                     return true;
                 }
                 else
                 {
                     if (ob.IsMatch(typed))
                     {
+                        
                         if (Convert.ToDouble(typed) <= 99999 && Convert.ToDouble(typed) >= 0)
                             return false;
                         else
                         {
-                            Console.WriteLine("Not more than 99999");
+                            Console.WriteLine(Constants.EXCEEDDATA);
                             return true;
                         }
                     }
                     else
-                        Console.WriteLine("Numeric value Only (Enter Again--------------->) ");
+                        Console.WriteLine(Constants.ONLYNUMERIC);
                     return true;
                 }
             }
-            
+
+            public bool updatedQuantity(double grandtotal)
+            {
+                if (grandtotal > 0)
+                {
+                    return false;
+                }
+                Console.WriteLine(Constants.DISCOUNT);
+                return true;
+            }
+
         }
     }
 

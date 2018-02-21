@@ -6,63 +6,56 @@ using System.Threading.Tasks;
 
 namespace skillup_generics
 {
-    public class orderdetails 
+    public class Orderdetails 
     {
-        private product pro;
-        
-        //private string ref_or_no;
-        private int quan;
-        private double amount, u_price, gt, dis;
-        private DateTime c_date, m_date;
-        //public string Ref_no
-        //{
-        //    get { return ref_or_no; }
-        //    set { ref_or_no = value; }
-        //}
         public int Quantity
         {
-            get { return quan; }
-            set { quan = value; }
+            get;
+            set;
         }
         public double Amount
         {
-            get { return amount; }
-            set { amount = value; }
+            get;
+            set;
         }
         public double UnitPrice
         {
-            get { return u_price; }
-            set { u_price = value; }
+            get;
+            set;
         }
         public double GrandTotal
         {
-            get { return gt; }
-            set { gt = value; }
+            get;
+            set;
         }
         public double DiscountAmount
         {
-            get { return dis; }
-            set { dis = value; }
+            get;
+            set;
         }
         public DateTime CreatedDate
         {
-            get { return c_date; }
-            set { c_date = value; }
+            get;
+            set;
         }
-        public DateTime ModifiedDate
+        public DateTime? ModifiedDate
         {
-            get { return m_date; }
-            set { m_date = value; }
+            get;
+            set;
         }
-        public product ProductDetail
+        public Product ProductDetail
         {
-            get { return pro; }
-            set { pro = value; }
+            get;
+            set;
         }
-
+        public string OrderNO
+        {
+            get;
+            set;
+        }
         public override string ToString()
         {
-            return pro.ProductNo+"\t\t"+pro.ProductName+"\t\t"+UnitPrice+"\t\t"+Quantity+"\t\t"+Amount+"\t\t"+DiscountAmount+"\t\t"+GrandTotal +"\n";
+            return ProductDetail.ProductNo + "\t\t" + ProductDetail.ProductName + "\t\t" + UnitPrice + "\t\t" + Quantity + "\t\t" + Amount + "\t\t" + DiscountAmount + "\t\t" + GrandTotal + "\n";
         }
     }
 }
